@@ -1,0 +1,71 @@
+using UnityEngine;
+using System.Collections.Generic;
+using System;
+public class LogManager : MonoBehaviour
+{
+    #region SigleTon
+    private static LogManager _instance = null;
+    private static bool applicationIsQuitting = false;
+    public static LogManager Instance
+    {
+        get
+        {
+            if (applicationIsQuitting)
+                return null;
+
+            if (_instance == null)
+            {
+                _instance = (LogManager)FindObjectOfType(typeof(LogManager));
+                if (!_instance)
+                {
+                    GameObject container = new GameObject();
+                    container.name = "LogManager";
+                    _instance = container.AddComponent(typeof(LogManager)) as LogManager;
+                }
+            }
+            return _instance;
+        }
+    }
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+        SetLogList();
+    }
+    #endregion
+    [Flags]
+    public enum eLogType
+    {
+        None = 0 << 0,
+        SendHTTP = 1 << 0,
+        ReceiveHTTP = 1 << 1,
+        ErrorHTTP = 1 << 2,
+    }
+    private eLogType avtiveLogType = eLogType.SendHTTP | eLogType.ReceiveHTTP | eLogType.ErrorHTTP;
+    private List<Action<string>> logList = new List<Action<string>>();
+    private void SetLogList()
+    {
+        logList.Add(null);
+        logList.Add(PrintSendHTTPLog);
+        logList.Add(PrintReceiveHTTPLog);
+        logList.Add(PrintErrorHTTPLog);
+    }
+    public void PrintLog(eLogType logType,string str)
+    {
+        if ((avtiveLogType & logType) != 0)
+            logList[((int)logType)](str);
+    }
+	#region LogFunc
+	private void PrintSendHTTPLog(string str)
+    {
+        Debug.Log(string.Format("<color=#00ff00> {0} </color>", str));
+    }
+    private void PrintReceiveHTTPLog(string str)
+    {
+        Debug.Log(string.Format("<color=#0000ff> {0} </color>", str));
+    }
+    private void PrintErrorHTTPLog(string str)
+    {
+        Debug.Log(string.Format("<color=#ff0000> {0} </color>", str));
+    }
+	#endregion
+}
