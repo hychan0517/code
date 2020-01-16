@@ -32,6 +32,13 @@ public class LogManager : MonoBehaviour
         SetLogList();
     }
     #endregion
+    private eLogType avtiveLogType = eLogType.SendHTTP | eLogType.ReceiveHTTP | eLogType.ErrorHTTP;
+    private Dictionary<eLogType, string> logList = new Dictionary<eLogType, string>();
+    /// <summary>
+    /// 로그 추가시 추가할 내용
+    ///  1.eLogType 추가
+    ///  2.SetLogList 추가, 색 설정
+    /// </summary>
     [Flags]
     public enum eLogType
     {
@@ -40,32 +47,15 @@ public class LogManager : MonoBehaviour
         ReceiveHTTP = 1 << 1,
         ErrorHTTP = 1 << 2,
     }
-    private eLogType avtiveLogType = eLogType.SendHTTP | eLogType.ReceiveHTTP | eLogType.ErrorHTTP;
-    private List<Action<string>> logList = new List<Action<string>>();
     private void SetLogList()
     {
-        logList.Add(null);
-        logList.Add(PrintSendHTTPLog);
-        logList.Add(PrintReceiveHTTPLog);
-        logList.Add(PrintErrorHTTPLog);
+        logList.Add(eLogType.SendHTTP, "#00ff00");
+        logList.Add(eLogType.ReceiveHTTP, "#0000ff");
+        logList.Add(eLogType.ErrorHTTP, "#ff0000");
     }
     public void PrintLog(eLogType logType,string str)
     {
         if ((avtiveLogType & logType) != 0)
-            logList[((int)logType)](str);
+            Debug.Log(string.Format("<color={0}> {1} </color>",logList[logType],str));
     }
-	#region LogFunc
-	private void PrintSendHTTPLog(string str)
-    {
-        Debug.Log(string.Format("<color=#00ff00> {0} </color>", str));
-    }
-    private void PrintReceiveHTTPLog(string str)
-    {
-        Debug.Log(string.Format("<color=#0000ff> {0} </color>", str));
-    }
-    private void PrintErrorHTTPLog(string str)
-    {
-        Debug.Log(string.Format("<color=#ff0000> {0} </color>", str));
-    }
-	#endregion
 }
