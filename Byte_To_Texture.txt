@@ -1,0 +1,12 @@
+	public void SaveImage(byte[] imageByte)
+	{
+		//Byte정보로 쿠폰 이미지 Texture 생성
+		Texture2D newTexture = new Texture2D(1000, 1000);
+		
+		newTexture.LoadImage(imageByte);
+		newTexture.SetPixels(0, 0, newTexture.width, newTexture.height, newTexture.GetPixels());
+		newTexture.Apply();
+		SaveCouponImage(newTexture);
+		
+		Debug.Log(NativeGallery.SaveImageToGallery(newTexture, "BicycleCoupon", string.Format("{0}.png", DateTime.Now.ToString("yyyyMMddHHmmss"))));
+	}
