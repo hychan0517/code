@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-public static class ExtensionMethod
+static public class ExtensionMethod
 {
 	/// <summary> 이름으로 오브젝트 찾기</summary>
-	public static GameObject GetChildObject(this GameObject obj, string strChildName)
+	static public GameObject GetChildObject(this GameObject obj, string strChildName)
 	{
 		if (obj == null)
 			return null;
@@ -19,7 +19,7 @@ public static class ExtensionMethod
 	}
 
 	/// <summary> 바로 밑의 자식들만 찾아온다</summary>
-	public static GameObject[] GetChildsObject(this GameObject obj)
+	static public GameObject[] GetChildsObject(this GameObject obj)
 	{
 		if (obj == null)
 			return null;

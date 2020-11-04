@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace GlobalDefine
 {
@@ -21,8 +24,8 @@ namespace GlobalDefine
 	}
 	static public class Rand // 만분율 기준 0~9999까지 저장
 	{
-		private static int _index = 0;
-		private static int[] _randomArr = new int[Define.RANDOM_POOL_COUNT];
+        static private int _index = 0;
+        static private int[] _randomArr = new int[Define.RANDOM_POOL_COUNT];
 
 		static Rand()
 		{
@@ -32,7 +35,7 @@ namespace GlobalDefine
 			}
 		}
 
-		private static int nIndex
+        static private int nIndex
 		{
 			get
 			{
@@ -44,12 +47,12 @@ namespace GlobalDefine
 			}
 		}
 
-		public static int Random() { return _randomArr[nIndex]; }
+        static public int Random() { return _randomArr[nIndex]; }
 
-		public static bool Percent(float a_nPercent) { return _randomArr[nIndex] <= (a_nPercent * 100); }
-		public static bool Permile(float a_nPermile) { return _randomArr[nIndex] <= (a_nPermile * 10); }
-		public static bool Permilad(int a_nPermilad) { return _randomArr[nIndex] <= a_nPermilad; }
-		public static int Range(int a_nStart, int a_nEnd)
+        static public bool Percent(float a_nPercent) { return _randomArr[nIndex] <= (a_nPercent * 100); }
+        static public bool Permile(float a_nPermile) { return _randomArr[nIndex] <= (a_nPermile * 10); }
+        static public bool Permilad(int a_nPermilad) { return _randomArr[nIndex] <= a_nPermilad; }
+        static public int Range(int a_nStart, int a_nEnd)
 		{
 			if (a_nStart > a_nEnd)
 			{
@@ -76,8 +79,8 @@ namespace GlobalDefine
 			aes.Padding = PaddingMode.PKCS7;
 		}
 
-		// 암호화
-		public static byte[] AESEncrypt256(string strEncryptData)
+        // 암호화
+        static public byte[] AESEncrypt256(string strEncryptData)
 		{
 			byte[] encryptData = Encoding.UTF8.GetBytes(strEncryptData);
 			var salt = sha256Managed.ComputeHash(Encoding.UTF8.GetBytes(privateKey.Length.ToString()));
@@ -97,8 +100,8 @@ namespace GlobalDefine
 			return xBuff;
 		}
 
-		// 복호화
-		public static string AESDecrypt256(byte[] decryptData)
+        // 복호화
+        static public string AESDecrypt256(byte[] decryptData)
 		{
 			var salt = sha256Managed.ComputeHash(Encoding.UTF8.GetBytes(privateKey.Length.ToString()));
 			//var PBKDF2Key = new Rfc2898DeriveBytes(privateKey, salt, 65535);    //반복 65535
@@ -120,7 +123,7 @@ namespace GlobalDefine
 	}
 	static public class FileIO
 	{
-		public static List<Dictionary<string, string>> CSVRead(string strFileName)
+        static public List<Dictionary<string, string>> CSVRead(string strFileName)
 		{
 			List<Dictionary<string, string>> listData = new List<Dictionary<string, string>>();
 
@@ -157,5 +160,222 @@ namespace GlobalDefine
 
 			return listData;
 		}
-	}
+        static public string CreateDataFolder(string dirName)
+        {
+            string path = Path.Combine(Application.persistentDataPath, dirName);
+            if (Directory.Exists(path) == false)
+                Directory.CreateDirectory(path);
+            return path;
+        }
+
+        static public void DeleteAllFile(string DirFullPath)
+        {
+            string[] fileList = Directory.GetFiles(DirFullPath);
+            for (int i = 0; i < fileList.Length; i++)
+            {
+                string str = fileList[i];
+                string filePath = Path.Combine(DirFullPath, str);
+                FileInfo fi = new FileInfo(filePath);
+                try
+                {
+                    if (fi.Exists)
+                    {
+                        fi.Delete();
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(string.Format("Error Delete File : {0}", e));
+                    break;
+                }
+            }
+        }
+        static public void DeleteFile(string filePath)
+        {
+            FileInfo fi = new FileInfo(filePath);
+            try
+            {
+                if (fi.Exists)
+                {
+                    fi.Delete();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(string.Format("Error Delete File : {0}", e));
+            }
+        }
+
+        static public IEnumerable<string> GetFiles(string dirPath)
+        {
+            if (string.IsNullOrWhiteSpace(dirPath))
+                return null;
+            try
+            {
+                return Directory.GetFiles(dirPath).Select(file => Path.GetFileName(file));
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(string.Format("Error FileSave : {0}", e));
+            }
+            return null;
+        }
+
+        static public string[] GetFilesFullPath(string dirPath)
+        {
+            if (string.IsNullOrWhiteSpace(dirPath))
+                return null;
+            try
+            {
+                return Directory.GetFiles(dirPath);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(string.Format("Error FileSave : {0}", e));
+            }
+            return null;
+        }
+
+        static public void FileWrite(string saveFilePath, byte[] bytes)
+        {
+            if (bytes.Length <= 0)
+            {
+                LogManager.Instance.PrintLog(LogManager.eLogType.Normal, string.Format("byte == null"));
+                return;
+            }
+            try
+            {
+                FileStream fs = new FileStream(saveFilePath, FileMode.Create, FileAccess.ReadWrite);
+                fs.Lock(0, bytes.Length);
+                fs.Write(bytes, 0, bytes.Length);
+                fs.Unlock(0, bytes.Length);
+                fs.Close();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(string.Format("Error FileSave : {0}", e));
+            }
+        }
+
+
+        static public IEnumerator FileRead(string fileFullPath, Action<byte[]> endCallback)
+        {
+            if (string.IsNullOrWhiteSpace(fileFullPath))
+            {
+                Debug.LogError(string.Format("FileRead => fileFullPath == null"));
+                endCallback?.Invoke(null);
+                yield break;
+            }
+
+            if (IsAndroid())
+            {
+                byte[] bytes = null;
+                UnityWebRequest www = null;
+                bool isError = false;
+                string strError = string.Empty;
+
+                try
+                {
+                    string localPath = string.Format("file://{0}", fileFullPath);
+                    www = UnityWebRequest.Get(localPath);
+                    UnityWebRequestAsyncOperation request = www.SendWebRequest();
+                    float _timeOut = 0;
+                    while (!request.isDone || !www.isDone)
+                    {
+                        yield return Define.WAIT_FOR_SECONS_POINT_ONE;
+                        if (_timeOut > 10)
+                        {
+                            isError = true;
+                            strError = "FileRead timeOut!";
+                            break;
+                        }
+                        _timeOut += Time.deltaTime;
+                    };
+
+                    if (www == null)
+                    {
+                        isError = true;
+                        strError = "FileRead www is null";
+                    }
+                    else if (www.isNetworkError || www.isHttpError)
+                    {
+                        isError = true;
+                        strError = www.error;
+                    }
+                    else
+                    {
+                        bytes = www.downloadHandler.data;
+                    }
+                }
+                finally
+                {
+                    www.Dispose();
+                }
+
+
+                if (isError == true)
+                {
+                    string str = string.Format("****************FileRead Error,  ErrorMsg : {0}****************", strError);
+                    Debug.LogError(str);
+                    endCallback?.Invoke(null);
+                }
+                else
+                {
+                    if (bytes != null && bytes.Length > 0)
+                    {
+                        endCallback?.Invoke(bytes);
+                    }
+                    else
+                    {
+                        Debug.LogError("****************File is null****************");
+                        endCallback?.Invoke(null);
+                        yield break;
+                    }
+                }
+            }
+            else
+            {
+                byte[] bytes = File.ReadAllBytes(fileFullPath);
+                float _timeOut = 0;
+                while (bytes == null)
+                {
+                    yield return Define.WAIT_FOR_SECONS_POINT_ONE;
+                    if (_timeOut > 10)
+                        yield break;
+                    _timeOut += Time.deltaTime;
+                }
+
+                if (bytes != null)
+                {
+                    if (bytes.Length > 0)
+                    {
+                        endCallback?.Invoke(bytes);
+                    }
+                    else
+                    {
+                        Debug.LogError("****************File is null****************");
+                        endCallback?.Invoke(null);
+                    }
+                }
+                else
+                {
+                    Debug.LogError("****************File is null****************");
+                    endCallback?.Invoke(null);
+                }
+            }
+        }
+        static public bool IsAndroid()
+        {
+            if (Application.platform == RuntimePlatform.Android &&
+                Application.platform != RuntimePlatform.OSXEditor &&
+                Application.platform != RuntimePlatform.WindowsEditor)
+                return true;
+            return false;
+        }
+
+        static public T ParserJsonToObject<T>(string strJson)
+        {
+            return JsonUtility.FromJson<T>(strJson);
+        }
+    }
 }
