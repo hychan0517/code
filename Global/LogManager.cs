@@ -45,7 +45,7 @@ public class LogManager : MonoBehaviour
 	{
 		None = 0,
 		Normal = 1 << 0,
-		Err = 1 << 1,
+		Error = 1 << 1,
 		STARTEND = 1 << 2,
 		DataTableErr = 1 << 3,
 		Max = 4,
@@ -54,7 +54,7 @@ public class LogManager : MonoBehaviour
 	{
 		//색 설정
 		logDict.Add(eLogType.Normal, "#000000");
-		logDict.Add(eLogType.Err, "#ff0000");
+		logDict.Add(eLogType.Error, "#ff0000");
 		logDict.Add(eLogType.STARTEND, "#00ff00");
 		logDict.Add(eLogType.DataTableErr, "#0000ff");
 	}
@@ -74,6 +74,10 @@ public class LogManager : MonoBehaviour
 	public void PrintEndLog(string strType)
 	{
 		PrintLog(eLogType.STARTEND, string.Format("▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲{0} : End▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲", strType));
+	}
+	public void PrintSystemErrLog(Exception e)
+	{
+		PrintLog(eLogType.Error, string.Format("Exception Err. Message : {0} \n Stack Trace : {1}", e.Message, e.StackTrace));
 	}
 	private void OnDestroy()
 	{
