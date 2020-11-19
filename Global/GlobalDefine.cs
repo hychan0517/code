@@ -21,7 +21,18 @@ namespace GlobalDefine
         public static WaitForSeconds WAIT_FOR_SECONDS_TEN = new WaitForSeconds(10.0f);
         public static WaitForSeconds WAIT_FOR_SECONS_POINT_ONE = new WaitForSeconds(0.1f);
         public static WaitForSeconds WAIT_FOR_SECONS_POINT_FIVE = new WaitForSeconds(0.5f);
-	}
+
+        public static Color ColorHexToRGBA(string hexColor)
+        {
+            if (hexColor[0] != '#')
+                hexColor = "#" + hexColor;
+            if (hexColor.Length == 7)
+                hexColor = hexColor + "FF";
+
+            ColorUtility.TryParseHtmlString(hexColor, out Color c);
+            return c;
+        }
+    }
 	static public class Rand // 만분율 기준 0~9999까지 저장
 	{
         static private int _index = 0;
