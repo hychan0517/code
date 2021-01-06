@@ -9,10 +9,8 @@ public class SoundEffectManager : MonoBehaviour
     private List<AudioSource> _effectTable = new List<AudioSource>();
     private List<AudioSource> _soundTable = new List<AudioSource>();
     private List<AudioSource> _clickSoundList = new List<AudioSource>();
-    private List<AudioSource> _coinSoundList = new List<AudioSource>();
 
     private int _nowClickSoundIndex;
-    private int _nowCoinSoundIndex;
     private float _effectVolume = 1.0f;
     private float _soundVolume = 1.0f;
 
@@ -40,18 +38,6 @@ public class SoundEffectManager : MonoBehaviour
         }
     }
     private const int MAX_CLICK_SOUND = 5;
-    private int CoinSoundIndex
-    {
-        get
-        {
-            if (_nowCoinSoundIndex == _coinSoundList.Count)
-            {
-                _nowCoinSoundIndex = 0;
-            }
-            return _nowCoinSoundIndex++;
-        }
-    }
-    private const int MAX_COIN_SOUND = 5;
     //===============================================================================================
     public static SoundEffectManager GetInstance()
     {
@@ -104,10 +90,6 @@ public class SoundEffectManager : MonoBehaviour
             {
                 i.volume = effectValue;
             }
-            foreach (var i in _coinSoundList)
-            {
-                i.volume = effectValue;
-            }
             changeFlag = true;
         }
         if(soundValue != _soundVolume)
@@ -130,7 +112,6 @@ public class SoundEffectManager : MonoBehaviour
     {
         RegisterAudioSource();
         RegisterClickAudioSource();
-        RegisterCoinAudioSource();
     }
 
     private void RegisterClickAudioSource()
@@ -141,19 +122,11 @@ public class SoundEffectManager : MonoBehaviour
             _clickSoundList[i].volume = _effectVolume;
         }
     }
-    private void RegisterCoinAudioSource()
-    {
-        for (int i = 0; i < MAX_COIN_SOUND; ++i)
-        {
-            _coinSoundList.Add(Instantiate(Resources.Load<GameObject>("Prefabs/Common/CoinSound"), transform).GetComponent<AudioSource>());
-            _coinSoundList[i].volume = _effectVolume;
-        }
-    }
 
     private void RegisterAudioSource()
     {
-        AddSound("None", true);
-        AddEffect("None", true);
+        //AddSound("None", true);
+        //AddEffect("None", true);
     }
     private void AddEffect(string name,bool isLoop)
     {
@@ -239,11 +212,6 @@ public class SoundEffectManager : MonoBehaviour
         if(_clickSoundList[ClickSoundIndex] && _clickSoundList[ClickSoundIndex].volume != 0)
             _clickSoundList[ClickSoundIndex].Play();
     }
-    public void PlayCoin()
-    {
-        if(_coinSoundList[CoinSoundIndex])
-            _coinSoundList[CoinSoundIndex].Play();
-    }
 
     /// <summary> 특정 이유(특정 상황에서 사운드가 안나와야 하거나 중복 사운드 방지 등)로 잠시 볼륨을 꺼놓을 때 사용 </summary>
     public void SetOffEffect(eEffectType type)
@@ -252,22 +220,6 @@ public class SoundEffectManager : MonoBehaviour
             _effectTable[(int)type].volume = 0;
     }
     
-    public void SetOffMileage()
-    {
-        foreach (var i in _coinSoundList)
-        {
-            if(i)
-                i.volume = 0;
-        }
-    }
-    public void SetOnMileage()
-    {
-        foreach (var i in _coinSoundList)
-        {
-            if (i)
-                i.volume = _effectVolume;
-        }
-    }
     public float GetEffectVolume()
     {
         return _effectVolume;

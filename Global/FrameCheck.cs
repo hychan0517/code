@@ -2,6 +2,7 @@
 
 public class FrameCheck : MonoBehaviour
 {
+#if DEBUG_MODE
 	float deltaTime = 0.0f;
 
 	GUIStyle style;
@@ -11,7 +12,7 @@ public class FrameCheck : MonoBehaviour
 	float worstFps = 100f;
 	string text;
 
-#if DEBUG_MODE
+
 	void Awake()
     {
         int w = Screen.width, h = Screen.height;
