@@ -140,6 +140,7 @@ public class SoundEffectManager : MonoBehaviour
         }
         catch(Exception e)
         {
+            _effectTable.Add(new AudioSource());
             LogManager.Instance.PrintLog(LogManager.eLogType.Error, e.Message);
             LogManager.Instance.PrintLog(LogManager.eLogType.Error, string.Format("Init Audio Err Sound Name : {0}",name));
         }
@@ -156,6 +157,7 @@ public class SoundEffectManager : MonoBehaviour
         }
         catch (Exception e)
         {
+            _soundTable.Add(new AudioSource());
             LogManager.Instance.PrintLog(LogManager.eLogType.Error, e.Message);
             LogManager.Instance.PrintLog(LogManager.eLogType.Error, string.Format("Init Audio Err Sound Name : {0}", name));
         }
@@ -164,7 +166,7 @@ public class SoundEffectManager : MonoBehaviour
     {
         if (_effectVolume <= 0)
             return;
-        if (_effectTable.Count > (int)soundType && _effectTable[(int)soundType])
+        if (_effectTable.Count > (int)soundType && _effectTable[(int)soundType].clip)
         {
             if(_effectTable[(int)soundType].isPlaying && _effectTable[(int)soundType].clip.length >= 1.0f)
             {
@@ -190,7 +192,7 @@ public class SoundEffectManager : MonoBehaviour
     {
         if (_soundVolume <= 0)
             return;
-        if (_soundTable.Count > (int)soundType && _soundTable[(int)soundType])
+        if (_soundTable.Count > (int)soundType && _soundTable[(int)soundType].clip)
         {
             _soundTable[(int)soundType].Play();
         }
