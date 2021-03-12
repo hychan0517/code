@@ -1,58 +1,65 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class FrameCheck : MonoBehaviour
+public class FrameCheck_HYC : MonoBehaviour
 {
 #if DEBUG_MODE
-	float deltaTime = 0.0f;
+    private Text _textFPS;
+    private float _fFrameSumDeltaTime = 0.0f;
+    private int _iFrameDataCount = 0;
+    private float _fFrameLow = 1000.0f;
+    private float _fFrameBest = 0;
 
-	GUIStyle style;
-	Rect rect;
-	float msec;
-	float fps;
-	float worstFps = 100f;
-	string text;
-
-
-	void Awake()
+    private void Awake()
     {
-        int w = Screen.width, h = Screen.height;
-
-        rect = new Rect(0, 0, w, h * 4 / 100);
-
-        style = new GUIStyle();
-        style.alignment = TextAnchor.UpperLeft;
-        style.fontSize = h * 4 / 100;
-        style.normal.textColor = Color.cyan;
-
-        StartCoroutine("worstReset");
-    }
-
-    IEnumerator worstReset() //코루틴으로 15초 간격으로 최저 프레임 리셋해줌.
-    {
-		WaitForSeconds waitTime = new WaitForSeconds(15);
-        while (true)
-        {
-			yield return waitTime;
-			worstFps = 100f;
-        }
+        _textFPS = GetComponentInChildren<Text>();
     }
 
     void Update()
     {
-        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-    }
+        DisplayDebuggingFrameRate();
+        //DisplayDebuggingStartCount();
 
-    void OnGUI()//소스로 GUI 표시.
+        if (Input.GetKeyDown(KeyCode.Q) || Input.touchCount > 3)
+        {
+            _fFrameLow = 1000;
+            _fFrameBest = 0;
+        }
+    }
+    private void DisplayDebuggingFrameRate()
     {
-        msec = deltaTime * 1000.0f;
-        fps = 1.0f / deltaTime;  //초당 프레임 - 1초에
+        if (Time.deltaTime > 0.0f)
+        {
+            float fFrameRate = 1.0f / Time.deltaTime;
 
-        if (fps < worstFps)  //새로운 최저 fps가 나왔다면 worstFps 바꿔줌.
-            worstFps = fps;
-        text = msec.ToString("F1") + "ms (" + fps.ToString("F1") + ") //worst : " + worstFps.ToString("F1");
-        GUI.Label(rect, text, style);
+            if (fFrameRate < _fFrameLow)
+            {
+                _fFrameLow = fFrameRate;
+            }
+            if (fFrameRate > _fFrameBest)
+                _fFrameBest = fFrameRate;
+
+
+            _fFrameSumDeltaTime += Time.deltaTime;
+            ++_iFrameDataCount;
+            float fFrameSumRate = 1.0f / (_fFrameSumDeltaTime / _iFrameDataCount);
+
+            string log = string.Format("FPS : {0,3}\nLow : {1,3}\nBest : {2,3}\nAvg : {3,3}", (int)fFrameRate, (int)_fFrameLow, (int)_fFrameBest, (int)fFrameSumRate);
+            if (_textFPS)
+                _textFPS.text = log;
+        }
+        else
+        {
+            if (_textFPS)
+                _textFPS.text = "FPS:0.0,  Low:0.0,  Avg:0.0";
+        }
     }
+#else
+    private void Awake()
+	{
+        Destroy(gameObject);
+	}
 #endif
 }
-
