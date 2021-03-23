@@ -16,6 +16,12 @@ public class HorizontalScroll : MonoBehaviour
     private int _showCount;  // 화면에 보여질 슬롯
     private int _slotIndex = 0;
     private int _dataIndex = 0;
+    private void SettingScroll()
+	{
+        CreateRankSlot();
+        SettingScrollView();
+        SettingSlotBase();
+    }
 
     private void CreateRankSlot()
     {
@@ -50,11 +56,25 @@ public class HorizontalScroll : MonoBehaviour
 
     private void SettingScrollView()
     {
+        foreach(var i in _slotList)
+		{
+            i.gameObject.SetActive(false);
+		}
         _scrollView.velocity = Vector2.zero;
         _content.anchoredPosition = Vector2.zero;
         _content.sizeDelta = new Vector2(_dataList.Count * _slotSize.x, _content.rect.height);
         _slotIndex = 0;
         _dataIndex = 0;
+    }
+
+    private void SettingSlotBase()
+	{
+        for (int i = 0; i < _dataList.Count; i++)
+        {
+            if (i >= _showCount)
+                break;
+            SettingSlot(i, i);
+        }
     }
 
     private void MoveScrollByDataIndex(int dataIndex)

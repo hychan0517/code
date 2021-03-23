@@ -17,6 +17,13 @@ public class VerticalScroll : MonoBehaviour
     private int _slotIndex = 0;
     private int _dataIndex = 0;
 
+    private void SettingScroll()
+    {
+        CreateRankSlot();
+        SettingScrollView();
+        SettingSlotBase();
+    }
+
     private void CreateRankSlot()
     {
         if (_slotList.Count == 0 && _slotSample)
@@ -50,11 +57,25 @@ public class VerticalScroll : MonoBehaviour
 
     private void SettingScrollView()
     {
+        foreach (var i in _slotList)
+        {
+            i.gameObject.SetActive(false);
+        }
         _scrollView.velocity = Vector2.zero;
         _content.anchoredPosition = Vector2.zero;
         _content.sizeDelta = new Vector2(_content.rect.width, _dataList.Count * _slotSize.y);
         _slotIndex = 0;
         _dataIndex = 0;
+    }
+
+    private void SettingSlotBase()
+    {
+        for (int i = 0; i < _dataList.Count; i++)
+        {
+            if (i >= _showCount)
+                break;
+            SettingSlot(i, i);
+        }
     }
 
     private void MoveScrollByDataIndex(int dataIndex)
