@@ -5,18 +5,42 @@ using UnityEngine.UI;
 
 public class VerticalScroll : MonoBehaviour
 {
+    //Scroll
     private ScrollRect _scrollView;
+    private RectTransform _scrollViewRect;
     private RectTransform _content;
-    private Vector2 _slotSize;
+
     private Dictionary<int, string> _dataList = new Dictionary<int, string>();
     private List<GameObject> _slotList = new List<GameObject>();
     private GameObject _slotSample;
-    private float _scrollViewHeight;
+    private Vector2 _slotSize;
+
     private float _spacing = 0;
     private int _showCount;  // 화면에 보여질 슬롯
     private int _slotIndex = 0;
     private int _dataIndex = 0;
 
+
+    public void InitUIObject()
+    {
+        GameObject[] childs = BicycleUtil.GetChildsObject(gameObject);
+        foreach (GameObject child in childs)
+        {
+            if (string.Equals(child.name, "Scroll View"))
+            {
+                _scrollView = child.GetComponent<ScrollRect>();
+                _scrollViewRect = child.GetComponent<RectTransform>();
+                _content = BicycleUtil.GetChildObject(_scrollView.gameObject, "Content").GetComponent<RectTransform>();
+            }
+            else if (string.Equals(child.name, ""))
+            {
+
+            }
+        }
+    }
+
+    //Scroll=========================================================================================
+    #region Scroll
     private void SettingScroll()
     {
         CreateRankSlot();
@@ -35,12 +59,8 @@ public class VerticalScroll : MonoBehaviour
             // 비율 적용된 슬롯 사이즈
             _slotSize = new Vector2(realSlotSize.width * rate.x, (realSlotSize.height + _spacing) * rate.y);
 
-            // 스크롤 뷰 사이즈
-            Rect scrollViewHeight = transform.GetComponent<RectTransform>().rect;
-            _scrollViewHeight = scrollViewHeight.height;
-
             // 화면에 보여질 슬롯 수
-            var showCount = Convert.ToInt32(Math.Truncate(_scrollViewHeight / _slotSize.y));
+            var showCount = Convert.ToInt32(Math.Truncate(_scrollViewRect.rect.height / _slotSize.y));
             _showCount = showCount + 4;
 
             // 기본 슬롯 생성,배치
@@ -80,7 +100,7 @@ public class VerticalScroll : MonoBehaviour
 
     private void MoveScrollByDataIndex(int dataIndex)
     {
-        float targetPosY = dataIndex * _slotSize.y - _scrollViewHeight;
+        float targetPosY = dataIndex * _slotSize.y - _scrollViewRect.rect.height;
         _content.anchoredPosition = new Vector2(_content.anchoredPosition.y, targetPosY);
     }
 
@@ -150,4 +170,6 @@ public class VerticalScroll : MonoBehaviour
         if (_scrollView)
             _scrollView.onValueChanged.RemoveAllListeners();
     }
+    #endregion
+    //=========================================================================================Scroll
 }

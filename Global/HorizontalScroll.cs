@@ -6,16 +6,38 @@ using UnityEngine.UI;
 public class HorizontalScroll : MonoBehaviour
 {
     private ScrollRect _scrollView;
+    private RectTransform _scrollViewRect;
     private RectTransform _content;
-    private Vector2 _slotSize;
+
+    
     private Dictionary<int, string> _dataList = new Dictionary<int, string>();
     private List<GameObject> _slotList = new List<GameObject>();
     private GameObject _slotSample;
-    private float _scrollViewWidth;
+    private Vector2 _slotSize;
+
     private float _spacing = 0;
     private int _showCount;  // 화면에 보여질 슬롯
     private int _slotIndex = 0;
     private int _dataIndex = 0;
+
+    public void InitUIObject()
+    {
+        GameObject[] childs = BicycleUtil.GetChildsObject(gameObject);
+        foreach (GameObject child in childs)
+        {
+            if (string.Equals(child.name, "Scroll View"))
+            {
+                _scrollView = child.GetComponent<ScrollRect>();
+                _scrollViewRect = child.GetComponent<RectTransform>();
+                _content = BicycleUtil.GetChildObject(_scrollView.gameObject, "Content").GetComponent<RectTransform>();
+            }
+            else if (string.Equals(child.name, ""))
+            {
+
+            }
+        }
+    }
+
     private void SettingScroll()
 	{
         CreateRankSlot();
@@ -34,12 +56,8 @@ public class HorizontalScroll : MonoBehaviour
             // 비율 적용된 슬롯 사이즈
             _slotSize = new Vector2((realSlotSize.width + _spacing) * rate.x, realSlotSize.height * rate.y);
 
-            // 스크롤 뷰 사이즈
-            Rect scrollViewRect = transform.GetComponent<RectTransform>().rect;
-            _scrollViewWidth = scrollViewRect.width;
-
             // 화면에 보여질 슬롯 수
-            var showCount = Convert.ToInt32(Math.Truncate(_scrollViewWidth / _slotSize.x));
+            var showCount = Convert.ToInt32(Math.Truncate(_scrollViewRect.rect.width / _slotSize.x));
             _showCount = showCount + 4;
 
             // 기본 슬롯 생성,배치
@@ -79,7 +97,7 @@ public class HorizontalScroll : MonoBehaviour
 
     private void MoveScrollByDataIndex(int dataIndex)
     {
-        float targetPosX = -(dataIndex * _slotSize.x - _scrollViewWidth);
+        float targetPosX = -(dataIndex * _slotSize.x - _scrollViewRect.rect.width);
         _content.anchoredPosition = new Vector2(targetPosX, _content.anchoredPosition.y);
     }
 
