@@ -107,7 +107,7 @@ public class VerticalScroll : MonoBehaviour
     }
     private void UpScroll()
     {
-        if (_dataIndex != 0)
+        if (_dataIndex > 0)
         {
             _slotIndex = GetLastSlotIndex();
             SettingSlot(_slotIndex, --_dataIndex);
