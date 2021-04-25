@@ -1,0 +1,477 @@
+BuyCount : 71 SellCount : 60 LossMoney : 565290 GainMoney : 622070
+
+
+--------------------------------------------
+Code : 054410
+
+Buy -- FirstPrice : 12050 NowPrice : 12350 GainPrice : 12591 LossPrice : 12109 
+
+
+Sell -- Bought : 12350, Now : 12500, ProcessCount : 3, Gap : 150, Margine : 12000
+
+
+Buy -- FirstPrice : 12050 NowPrice : 12750 GainPrice : 12991 LossPrice : 12509 
+
+
+Sell -- Bought : 12750, Now : 12450, ProcessCount : 1, Gap : -300, Margine : -23400
+
+
+Buy -- FirstPrice : 12050 NowPrice : 12350 GainPrice : 12591 LossPrice : 12109 
+
+
+Sell -- Bought : 12350, Now : 12850, ProcessCount : 6, Gap : 500, Margine : 40000
+
+--------------------------------------------
+Code : 309930
+
+Buy -- FirstPrice : 4620 NowPrice : 4715 GainPrice : 4807.4 LossPrice : 4622.6 
+
+--------------------------------------------
+Code : 086890
+
+Buy -- FirstPrice : 23250 NowPrice : 23750 GainPrice : 24215 LossPrice : 23285 
+
+
+Sell -- Bought : 23750, Now : 23250, ProcessCount : 1, Gap : -500, Margine : -21000
+
+
+Buy -- FirstPrice : 23250 NowPrice : 23750 GainPrice : 24215 LossPrice : 23285 
+
+
+Sell -- Bought : 23750, Now : 23250, ProcessCount : 1, Gap : -500, Margine : -21000
+
+
+Buy -- FirstPrice : 23250 NowPrice : 23750 GainPrice : 24215 LossPrice : 23285 
+
+
+Sell -- Bought : 23750, Now : 23250, ProcessCount : 1, Gap : -500, Margine : -21000
+
+--------------------------------------------
+Code : 950210
+
+Buy -- FirstPrice : 37450 NowPrice : 38200 GainPrice : 38949 LossPrice : 37451 
+
+
+Sell -- Bought : 38200, Now : 38950, ProcessCount : 4, Gap : 750, Margine : 19500
+
+--------------------------------------------
+Code : 297570
+
+Buy -- FirstPrice : 6030 NowPrice : 6160 GainPrice : 6280.6 LossPrice : 6039.4 
+
+
+Sell -- Bought : 6160, Now : 6030, ProcessCount : 1, Gap : -130, Margine : -21060
+
+--------------------------------------------
+Code : 039860
+
+Buy -- FirstPrice : 10650 NowPrice : 10900 GainPrice : 11113 LossPrice : 10687 
+
+
+Sell -- Bought : 10900, Now : 11200, ProcessCount : 5, Gap : 300, Margine : 27300
+
+
+Buy -- FirstPrice : 10650 NowPrice : 11450 GainPrice : 11663 LossPrice : 11237 
+
+
+Sell -- Bought : 11450, Now : 11200, ProcessCount : 1, Gap : -250, Margine : -21750
+
+
+Buy -- FirstPrice : 10650 NowPrice : 11200 GainPrice : 11413 LossPrice : 10987 
+
+
+Sell -- Bought : 11200, Now : 11500, ProcessCount : 5, Gap : 300, Margine : 26700
+
+--------------------------------------------
+Code : 075970
+
+Buy -- FirstPrice : 6750 NowPrice : 6890 GainPrice : 7025 LossPrice : 6755 
+
+
+Sell -- Bought : 6890, Now : 6750, ProcessCount : 1, Gap : -140, Margine : -20300
+
+--------------------------------------------
+Code : 053160
+
+Buy -- FirstPrice : 31300 NowPrice : 31950 GainPrice : 32576 LossPrice : 31324 
+
+
+Sell -- Bought : 31950, Now : 31300, ProcessCount : 1, Gap : -650, Margine : -20150
+
+
+Buy -- FirstPrice : 31300 NowPrice : 32050 GainPrice : 32676 LossPrice : 31424 
+
+
+Sell -- Bought : 32050, Now : 31400, ProcessCount : 1, Gap : -650, Margine : -20150
+
+
+Buy -- FirstPrice : 31300 NowPrice : 31950 GainPrice : 32576 LossPrice : 31324 
+
+--------------------------------------------
+Code : 049830
+
+Buy -- FirstPrice : 23200 NowPrice : 23700 GainPrice : 24164 LossPrice : 23236 
+
+
+Sell -- Bought : 23700, Now : 24850, ProcessCount : 7, Gap : 1150, Margine : 48300
+
+
+Buy -- FirstPrice : 23200 NowPrice : 25400 GainPrice : 25864 LossPrice : 24936 
+
+
+Sell -- Bought : 25400, Now : 25700, ProcessCount : 3, Gap : 300, Margine : 11700
+
+--------------------------------------------
+Code : 302440
+
+Buy -- FirstPrice : 145500 NowPrice : 148500 GainPrice : 151410 LossPrice : 145590 
+
+
+Sell -- Bought : 148500, Now : 150500, ProcessCount : 3, Gap : 2000, Margine : 12000
+
+--------------------------------------------
+Code : 007330
+
+Buy -- FirstPrice : 17100 NowPrice : 17450 GainPrice : 17792 LossPrice : 17108 
+
+
+Sell -- Bought : 17450, Now : 17100, ProcessCount : 1, Gap : -350, Margine : -19950
+
+
+Buy -- FirstPrice : 17100 NowPrice : 17450 GainPrice : 17792 LossPrice : 17108 
+
+--------------------------------------------
+Code : 317530
+
+Buy -- FirstPrice : 7460 NowPrice : 7610 GainPrice : 7759.2 LossPrice : 7460.8 
+
+
+Sell -- Bought : 7610, Now : 7680, ProcessCount : 3, Gap : 70, Margine : 9170
+
+
+Buy -- FirstPrice : 7460 NowPrice : 7850 GainPrice : 7999.2 LossPrice : 7700.8 
+
+
+Sell -- Bought : 7850, Now : 8000, ProcessCount : 4, Gap : 150, Margine : 19050
+
+
+Buy -- FirstPrice : 7460 NowPrice : 8150 GainPrice : 8299.2 LossPrice : 8000.8 
+
+
+Sell -- Bought : 8150, Now : 8240, ProcessCount : 3, Gap : 90, Margine : 10980
+
+--------------------------------------------
+Code : 027710
+
+Buy -- FirstPrice : 2230 NowPrice : 2275 GainPrice : 2319.6 LossPrice : 2230.4 
+
+
+Sell -- Bought : 2275, Now : 2230, ProcessCount : 1, Gap : -45, Margine : -19755
+
+--------------------------------------------
+Code : 014190
+
+Buy -- FirstPrice : 5400 NowPrice : 5510 GainPrice : 5618 LossPrice : 5402 
+
+
+Sell -- Bought : 5510, Now : 5400, ProcessCount : 1, Gap : -110, Margine : -19910
+
+
+Buy -- FirstPrice : 5400 NowPrice : 5510 GainPrice : 5618 LossPrice : 5402 
+
+
+Sell -- Bought : 5510, Now : 5540, ProcessCount : 3, Gap : 30, Margine : 5430
+
+
+Buy -- FirstPrice : 5400 NowPrice : 5680 GainPrice : 5788 LossPrice : 5572 
+
+
+Sell -- Bought : 5680, Now : 5570, ProcessCount : 1, Gap : -110, Margine : -19360
+
+
+Buy -- FirstPrice : 5400 NowPrice : 5580 GainPrice : 5688 LossPrice : 5472 
+
+
+Sell -- Bought : 5580, Now : 5640, ProcessCount : 3, Gap : 60, Margine : 10740
+
+
+Buy -- FirstPrice : 5400 NowPrice : 5750 GainPrice : 5858 LossPrice : 5642 
+
+
+Sell -- Bought : 5750, Now : 5640, ProcessCount : 1, Gap : -110, Margine : -19030
+
+
+Buy -- FirstPrice : 5400 NowPrice : 5640 GainPrice : 5748 LossPrice : 5532 
+
+--------------------------------------------
+Code : 009520
+
+Buy -- FirstPrice : 8690 NowPrice : 8880 GainPrice : 9053.8 LossPrice : 8706.2 
+
+
+Sell -- Bought : 8880, Now : 9060, ProcessCount : 4, Gap : 180, Margine : 20160
+
+--------------------------------------------
+Code : 031980
+
+Buy -- FirstPrice : 13050 NowPrice : 13350 GainPrice : 13611 LossPrice : 13089 
+
+
+Sell -- Bought : 13350, Now : 13050, ProcessCount : 1, Gap : -300, Margine : -22200
+
+--------------------------------------------
+Code : 109820
+
+Buy -- FirstPrice : 16250 NowPrice : 16600 GainPrice : 16925 LossPrice : 16275 
+
+
+Sell -- Bought : 16600, Now : 17050, ProcessCount : 5, Gap : 450, Margine : 27000
+
+--------------------------------------------
+Code : 048410
+
+Buy -- FirstPrice : 46600 NowPrice : 47550 GainPrice : 48482 LossPrice : 46618 
+
+
+Sell -- Bought : 47550, Now : 46600, ProcessCount : 1, Gap : -950, Margine : -19950
+
+--------------------------------------------
+Code : 092300
+
+Buy -- FirstPrice : 6100 NowPrice : 6240 GainPrice : 6362 LossPrice : 6118 
+
+
+Sell -- Bought : 6240, Now : 6300, ProcessCount : 2, Gap : 60, Margine : 9600
+
+--------------------------------------------
+Code : 032300
+
+Buy -- FirstPrice : 54600 NowPrice : 55700 GainPrice : 56792 LossPrice : 54608 
+
+
+Sell -- Bought : 55700, Now : 54600, ProcessCount : 1, Gap : -1100, Margine : -18700
+
+--------------------------------------------
+Code : 021080
+
+Buy -- FirstPrice : 5220 NowPrice : 5330 GainPrice : 5434.4 LossPrice : 5225.6 
+
+
+Sell -- Bought : 5330, Now : 5220, ProcessCount : 1, Gap : -110, Margine : -20570
+
+--------------------------------------------
+Code : 020710
+
+Buy -- FirstPrice : 8560 NowPrice : 8740 GainPrice : 8911.2 LossPrice : 8568.8 
+
+--------------------------------------------
+Code : 064850
+
+Buy -- FirstPrice : 10300 NowPrice : 10550 GainPrice : 10756 LossPrice : 10344 
+
+
+Sell -- Bought : 10550, Now : 10650, ProcessCount : 3, Gap : 100, Margine : 9400
+
+
+Buy -- FirstPrice : 10300 NowPrice : 10900 GainPrice : 11106 LossPrice : 10694 
+
+--------------------------------------------
+Code : 020120
+
+Buy -- FirstPrice : 17100 NowPrice : 17450 GainPrice : 17792 LossPrice : 17108 
+
+--------------------------------------------
+Code : 054940
+
+Buy -- FirstPrice : 2080 NowPrice : 2125 GainPrice : 2166.6 LossPrice : 2083.4 
+
+
+Sell -- Bought : 2125, Now : 2080, ProcessCount : 1, Gap : -45, Margine : -21150
+
+--------------------------------------------
+Code : 263720
+
+Buy -- FirstPrice : 48600 NowPrice : 49600 GainPrice : 50572 LossPrice : 48628 
+
+--------------------------------------------
+Code : 003530
+
+Buy -- FirstPrice : 5560 NowPrice : 5680 GainPrice : 5791.2 LossPrice : 5568.8 
+
+
+Sell -- Bought : 5680, Now : 5560, ProcessCount : 1, Gap : -120, Margine : -21120
+
+--------------------------------------------
+Code : 000890
+
+Buy -- FirstPrice : 1145 NowPrice : 1170 GainPrice : 1192.9 LossPrice : 1147.1 
+
+--------------------------------------------
+Code : 041190
+
+Buy -- FirstPrice : 10450 NowPrice : 10700 GainPrice : 10909 LossPrice : 10491 
+
+
+Sell -- Bought : 10700, Now : 10450, ProcessCount : 1, Gap : -250, Margine : -23250
+
+--------------------------------------------
+Code : 019550
+
+Buy -- FirstPrice : 2210 NowPrice : 2260 GainPrice : 2304.2 LossPrice : 2215.8 
+
+
+Sell -- Bought : 2260, Now : 2215, ProcessCount : 1, Gap : -45, Margine : -19890
+
+--------------------------------------------
+Code : 205470
+
+Buy -- FirstPrice : 17300 NowPrice : 17650 GainPrice : 17996 LossPrice : 17304 
+
+
+Sell -- Bought : 17650, Now : 18150, ProcessCount : 5, Gap : 500, Margine : 28000
+
+
+Buy -- FirstPrice : 17300 NowPrice : 18600 GainPrice : 18946 LossPrice : 18254 
+
+
+Sell -- Bought : 18600, Now : 19300, ProcessCount : 6, Gap : 700, Margine : 37100
+
+
+Buy -- FirstPrice : 17300 NowPrice : 19650 GainPrice : 19996 LossPrice : 19304 
+
+
+Sell -- Bought : 19650, Now : 19800, ProcessCount : 3, Gap : 150, Margine : 7500
+
+
+Buy -- FirstPrice : 17300 NowPrice : 20200 GainPrice : 20546 LossPrice : 19854 
+
+
+Sell -- Bought : 20200, Now : 19850, ProcessCount : 1, Gap : -350, Margine : -17150
+
+
+Buy -- FirstPrice : 17300 NowPrice : 19900 GainPrice : 20246 LossPrice : 19554 
+
+
+Sell -- Bought : 19900, Now : 20050, ProcessCount : 3, Gap : 150, Margine : 7500
+
+--------------------------------------------
+Code : 025820
+
+Buy -- FirstPrice : 4385 NowPrice : 4475 GainPrice : 4562.7 LossPrice : 4387.3 
+
+
+Sell -- Bought : 4475, Now : 4385, ProcessCount : 1, Gap : -90, Margine : -20070
+
+--------------------------------------------
+Code : 080520
+
+Buy -- FirstPrice : 8080 NowPrice : 8260 GainPrice : 8421.6 LossPrice : 8098.4 
+
+--------------------------------------------
+Code : 043610
+
+Buy -- FirstPrice : 6290 NowPrice : 6420 GainPrice : 6545.8 LossPrice : 6294.2 
+
+--------------------------------------------
+Code : 310200
+
+Buy -- FirstPrice : 2665 NowPrice : 2720 GainPrice : 2773.3 LossPrice : 2666.7 
+
+
+Sell -- Bought : 2720, Now : 2805, ProcessCount : 5, Gap : 85, Margine : 31195
+
+
+Buy -- FirstPrice : 2665 NowPrice : 2855 GainPrice : 2908.3 LossPrice : 2801.7 
+
+
+Sell -- Bought : 2855, Now : 2935, ProcessCount : 5, Gap : 80, Margine : 28000
+
+
+Buy -- FirstPrice : 2665 NowPrice : 2990 GainPrice : 3043.3 LossPrice : 2936.7 
+
+
+Sell -- Bought : 2990, Now : 2935, ProcessCount : 1, Gap : -55, Margine : -18370
+
+
+Buy -- FirstPrice : 2665 NowPrice : 2935 GainPrice : 2988.3 LossPrice : 2881.7 
+
+
+Sell -- Bought : 2935, Now : 2880, ProcessCount : 1, Gap : -55, Margine : -18700
+
+
+Buy -- FirstPrice : 2665 NowPrice : 2900 GainPrice : 2953.3 LossPrice : 2846.7 
+
+
+Sell -- Bought : 2900, Now : 2845, ProcessCount : 1, Gap : -55, Margine : -18920
+
+
+Buy -- FirstPrice : 2665 NowPrice : 2845 GainPrice : 2898.3 LossPrice : 2791.7 
+
+
+Sell -- Bought : 2845, Now : 2870, ProcessCount : 3, Gap : 25, Margine : 8775
+
+
+Buy -- FirstPrice : 2665 NowPrice : 2925 GainPrice : 2978.3 LossPrice : 2871.7 
+
+
+Sell -- Bought : 2925, Now : 3005, ProcessCount : 5, Gap : 80, Margine : 27280
+
+
+Buy -- FirstPrice : 2665 NowPrice : 3060 GainPrice : 3113.3 LossPrice : 3006.7 
+
+
+Sell -- Bought : 3060, Now : 3100, ProcessCount : 3, Gap : 40, Margine : 13040
+
+
+Buy -- FirstPrice : 2665 NowPrice : 3150 GainPrice : 3203.3 LossPrice : 3096.7 
+
+
+Sell -- Bought : 3150, Now : 3095, ProcessCount : 1, Gap : -55, Margine : -17435
+
+
+Buy -- FirstPrice : 2665 NowPrice : 3095 GainPrice : 3148.3 LossPrice : 3041.7 
+
+
+Sell -- Bought : 3095, Now : 3200, ProcessCount : 6, Gap : 105, Margine : 33915
+
+
+Buy -- FirstPrice : 2665 NowPrice : 3255 GainPrice : 3308.3 LossPrice : 3201.7 
+
+
+Sell -- Bought : 3255, Now : 3285, ProcessCount : 3, Gap : 30, Margine : 9210
+
+
+Buy -- FirstPrice : 2665 NowPrice : 3340 GainPrice : 3393.3 LossPrice : 3286.7 
+
+
+Sell -- Bought : 3340, Now : 3465, ProcessCount : 7, Gap : 125, Margine : 37375
+
+--------------------------------------------
+Code : 307930
+
+Buy -- FirstPrice : 10900 NowPrice : 11150 GainPrice : 11368 LossPrice : 10932 
+
+
+Sell -- Bought : 11150, Now : 11300, ProcessCount : 3, Gap : 150, Margine : 13350
+
+--------------------------------------------
+Code : 003475
+
+Buy -- FirstPrice : 4605 NowPrice : 4700 GainPrice : 4792.1 LossPrice : 4607.9 
+
+
+Sell -- Bought : 4700, Now : 4750, ProcessCount : 3, Gap : 50, Margine : 10600
+
+--------------------------------------------
+Code : 007860
+
+Buy -- FirstPrice : 19050 NowPrice : 19450 GainPrice : 19831 LossPrice : 19069 
+
+
+Sell -- Bought : 19450, Now : 19650, ProcessCount : 3, Gap : 200, Margine : 10200
+
+--------------------------------------------
+Code : 037400
+
+Buy -- FirstPrice : 4010 NowPrice : 4095 GainPrice : 4175.2 LossPrice : 4014.8 
+

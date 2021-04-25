@@ -1,0 +1,15 @@
+C:\Users\허윤찬\source\repos\AutoOrder\AutoOrder\bin\Release\AutoOrder.exe.config
+C:\Users\허윤찬\source\repos\AutoOrder\AutoOrder\bin\Release\AutoOrder.exe
+C:\Users\허윤찬\source\repos\AutoOrder\AutoOrder\bin\Release\AutoOrder.pdb
+C:\Users\허윤찬\source\repos\AutoOrder\AutoOrder\bin\Release\Interop.KHOpenAPILib.dll
+C:\Users\허윤찬\source\repos\AutoOrder\AutoOrder\bin\Release\AxInterop.KHOpenAPILib.dll
+C:\Users\허윤찬\source\repos\AutoOrder\AutoOrder\obj\Release\AutoOrder.csprojAssemblyReference.cache
+C:\Users\허윤찬\source\repos\AutoOrder\AutoOrder\obj\Release\Interop.KHOpenAPILib.dll
+C:\Users\허윤찬\source\repos\AutoOrder\AutoOrder\obj\Release\AxInterop.KHOpenAPILib.dll
+C:\Users\허윤찬\source\repos\AutoOrder\AutoOrder\obj\Release\AutoOrder.csproj.ResolveComReference.cache
+C:\Users\허윤찬\source\repos\AutoOrder\AutoOrder\obj\Release\AutoOrder.Properties.Resources.resources
+C:\Users\허윤찬\source\repos\AutoOrder\AutoOrder\obj\Release\AutoOrder.csproj.GenerateResource.cache
+C:\Users\허윤찬\source\repos\AutoOrder\AutoOrder\obj\Release\AutoOrder.csproj.CoreCompileInputs.cache
+C:\Users\허윤찬\source\repos\AutoOrder\AutoOrder\obj\Release\AutoOrder.exe
+C:\Users\허윤찬\source\repos\AutoOrder\AutoOrder\obj\Release\AutoOrder.pdb
+C:\Users\허윤찬\source\repos\AutoOrder\AutoOrder\obj\Release\AutoOrder.BoughtEventData.resources
