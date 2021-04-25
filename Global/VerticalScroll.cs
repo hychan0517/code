@@ -110,7 +110,7 @@ public class VerticalScroll : MonoBehaviour
         {
             DownScroll();
         }
-        else if (_content.anchoredPosition.y < _dataIndex * _slotSize.x)
+        else if (_content.anchoredPosition.y < _dataIndex * _slotSize.y)
         {
             UpScroll();
         }
