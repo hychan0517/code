@@ -5,14 +5,10 @@ public class LogManager : MonoBehaviour
 {
 	#region SigleTon
 	private static LogManager _instance = null;
-	private static bool applicationIsQuitting = false;
 	public static LogManager Instance
 	{
 		get
 		{
-			if (applicationIsQuitting)
-				return null;
-
 			if (_instance == null)
 			{
 				_instance = (LogManager)FindObjectOfType(typeof(LogManager));
@@ -25,6 +21,10 @@ public class LogManager : MonoBehaviour
 			}
 			return _instance;
 		}
+	}
+	private void Awake()
+	{
+		SetLogList();
 	}
 	private void Start()
 	{
@@ -48,7 +48,7 @@ public class LogManager : MonoBehaviour
 		Error = 1 << 1,
 		STARTEND = 1 << 2,
 		DataTableErr = 1 << 3,
-		Max = 4,
+		Max = 7,
 	}
 	private void SetLogList()
 	{
@@ -60,12 +60,8 @@ public class LogManager : MonoBehaviour
 	}
 	public void PrintLog(eLogType logType, string str)
 	{
-		if (logDict.Count == 0)
-		{
-			SetLogList();
-		}
 		if ((avtiveLogType & logType) != 0)
-			Debug.Log(string.Format("<color={0}> {1} </color>", logDict[logType], str));
+			Debug.Log(string.Format("<color=#{0}> {1} </color>", logDict[logType], str));
 	}
 	public void PrintStartLog(string strType)
 	{
@@ -77,10 +73,6 @@ public class LogManager : MonoBehaviour
 	}
 	public void PrintSystemErrLog(Exception e)
 	{
-		PrintLog(eLogType.Error, string.Format("Exception Err. Message : {0} \n Stack Trace : {1}", e.Message, e.StackTrace));
-	}
-	private void OnDestroy()
-	{
-		applicationIsQuitting = true;
+		PrintLog(eLogType.Error, string.Format("Exception Err. Message : {0} \n\nStack Trace\n{1}", e.Message, e.StackTrace));
 	}
 }
