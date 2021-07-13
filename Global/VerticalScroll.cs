@@ -44,12 +44,12 @@ public class VerticalScroll : MonoBehaviour
     #region Scroll
     private void SettingScroll()
     {
-        CreateRankSlot();
+        CreateSlot();
         SettingScrollView();
-        SettingSlotBase();
+        SettingSlotDefault();
     }
 
-    private void CreateRankSlot()
+    private void CreateSlot()
     {
         if (_slotList.Count == 0 && _slotSample)
         {
@@ -89,7 +89,7 @@ public class VerticalScroll : MonoBehaviour
         _dataIndex = 0;
     }
 
-    private void SettingSlotBase()
+    private void SettingSlotDefault()
     {
         for (int i = 0; i < _dataList.Count; i++)
         {
