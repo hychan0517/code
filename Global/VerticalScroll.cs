@@ -29,6 +29,7 @@ public class VerticalScroll : MonoBehaviour
             if (string.Equals(child.name, "Scroll View"))
             {
                 _scrollView = child.GetComponent<ScrollRect>();
+                _scrollView.onValueChanged.AddListener((_x) => { OnValueChangedScroll(); });
                 _scrollViewRect = child.GetComponent<RectTransform>();
                 _content = BicycleUtil.GetChildObject(_scrollView.gameObject, "Content").GetComponent<RectTransform>();
             }
